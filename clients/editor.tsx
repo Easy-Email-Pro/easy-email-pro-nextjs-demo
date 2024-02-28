@@ -12,7 +12,6 @@ import data from "./template.json";
 import { useCompactMode } from "./hooks/useCompactMode";
 
 export default function MyEditor() {
-  const [theme, setTheme] = React.useState<string>("purple");
   const { upload } = useUpload();
 
   const initialValues: EmailTemplate | null = useMemo(() => {
@@ -30,15 +29,19 @@ export default function MyEditor() {
     console.log(values);
   };
 
-  const compact = useCompactMode();
   const config = Retro.useCreateConfig({
-    clientId: "your client ID",
+    clientId: "FREE",
+    height: "calc(100vh - 66px)",
     onUpload,
     initialValues: initialValues,
     onSubmit: onSubmit,
-    height: "calc(100vh - 66px)",
+    showSourceCode: true,
     showLayer: true,
-    compact,
+    showPreview: true,
+    showSidebar: true,
+    compact: false,
+    showDragMoveIcon: true,
+    showInsertTips: true,
   });
 
   return (
